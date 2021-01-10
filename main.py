@@ -4,9 +4,12 @@
 import scraper
 import parser
 import language
+from pprint import pprint
+
 
 keyword = ''
 total_page = 1
+
 
 def prompt_for_info() -> None:
     global keyword
@@ -15,12 +18,16 @@ def prompt_for_info() -> None:
     total_page= input(language.ASK_FOR_TOTAL_PAGE)
 
 
+def print_loading() -> None:
+    print(language.PROCESSING_DATA)
+
+
 def get_titles():
     page_soup = parser.get_page_soup(scraper.scrape(keyword, total_page))
-    
+    pprint(parser.get_item_titles(page_soup))
+
 
 if __name__ == '__main__':
     prompt_for_info()
+    print_loading()
     get_titles()
-
-

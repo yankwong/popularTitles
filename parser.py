@@ -1,34 +1,15 @@
-import json
 from bs4 import BeautifulSoup
-
-rarity_translator = {
-    1: '★',
-    2: '★★',
-    3: '★★★',
-    4: '★★★★',
-    5: '★★★★★',
-}
 
 
 def get_page_soup(page_content: str):
     return BeautifulSoup(page_content, 'html.parser')
 
 
-def get_total_rarity(tier_list_json, target_rarity) -> int:
-    total = 0
-    all_rarities = tier_list_json.find_all('span', class_='star-rarity')
+def get_item_titles(page_soup):
+    titles = []
+    title_elements = page_soup.find_all('h3', class_='s-item__title')
 
-    for rarity in all_rarities:
-        if rarity.text == rarity_translator[target_rarity]:
-            total += 1
-    return total
+    for title_element in title_elements:
+        titles.append(title_element.text)
 
-
-def get_servant_type(tier_list_json, servant_type) -> int:
-    total = 0
-    all_servant_types = tier_list_json.select('.FGOTierNPInfo > div')
-
-    for s_type in all_servant_types:
-        if s_type.text == servant_type:
-            total += 1
-    return total
+    return titles

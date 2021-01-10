@@ -5,8 +5,8 @@ from pprint import pprint
 
 
 def get_titles(search_word: str, page_total: str):
-    page_soup = parser.get_page_soups(scraper.scrape(search_word, int(page_total)))
-    pprint(parser.get_item_titles(page_soup))
+    page_soups = parser.get_page_soups(scraper.scrape(search_word, int(page_total)))
+    pprint(parser.get_item_titles(page_soups))
 
 
 if __name__ == '__main__':

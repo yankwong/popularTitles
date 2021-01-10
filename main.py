@@ -18,7 +18,7 @@ def prompt_for_info() -> None:
     total_page= input(language.ASK_FOR_TOTAL_PAGE)
 
 
-def print_loading() -> None:
+def print_loading_msg() -> None:
     print(language.PROCESSING_DATA)
 
 
@@ -29,5 +29,5 @@ def get_titles():
 
 if __name__ == '__main__':
     prompt_for_info()
-    print_loading()
+    print_loading_msg()
     get_titles()

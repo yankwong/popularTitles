@@ -10,7 +10,7 @@ rarity_translator = {
 }
 
 
-def get_page_json(page_content: str):
+def get_page_soup(page_content: str):
     return BeautifulSoup(page_content, 'html.parser')
 
 
